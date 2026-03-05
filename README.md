@@ -87,6 +87,15 @@ doc/architecture/recommendation.md
 Konfiguracja: doc/setup.md
 Prowadzenie projektu: doc/project_management.md
 
+## Zrzuty ekranu
+| Widok głównego menu | Widok mapy z destynacjami |
+| :-----------------: | :----------------------------: |
+| ![Main Menu](doc/assets/screenshots/main_menu.png) | ![Map](doc/assets/screenshots/map.png) |
+
+| Widok rekomendowanych miejsc | 
+| :-------------------: | 
+| ![Recomendation](doc/assets/screenshots/recomendation.png) | ! |
+
 ## Licencja
 Projekt do użytku dydaktycznego.
 
