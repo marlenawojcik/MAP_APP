@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HoliAsk! - Znajdź swoje wymarzone wakacje</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="hero">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-map-marked-alt"></i>
+                <h1>HoliAsk!</h1>
+            </div>
+            <p class="subtitle">Odpowiedz na kilka pytań, a my znajdziemy Twoje idealne miejsce na wakacje</p>
+            
+            <div class="form-container">
+                <form id="wakacjeForm" action="{{ url_for('map.map') }}" method="post">
+                    <div class="question-card">
+                        <div class="question-icon"><i class="fas fa-globe-americas"></i></div>
+                        <div class="question-content">
+                            <label for="preferencja1">Jaki kontinent Cię interesuje?</label>
+                            <select id="preferencja1" name="preferencja1" required>
+                                <option value="" disabled selected>Wybierz kontynent</option>
+                                <option value="Europa">Europa</option>
+                                <option value="Azja">Azja</option>
+                                <option value="Ameryka Północna">Ameryka Północna</option>
+                                <option value="Ameryka Południowa">Ameryka Południowa</option>
+                                <option value="Australia">Australia</option>
+                                <option value="Afryka">Afryka</option>
+                                <option value="obojętnie">🌍 Obojętnie</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="question-icon"><i class="fas fa-sun"></i></div>
+                        <div class="question-content">
+                            <label for="preferencja2">Jaki klimat preferujesz?</label>
+                            <select id="preferencja2" name="preferencja2" required>
+                                <option value="" disabled selected>Wybierz klimat</option>
+                                <option value="umiarkowany">🌿 Umiarkowany</option>
+                                <option value="śródziemnomorski">☀️ Śródziemnomorski</option>
+                                <option value="zwrotnikowy/tropikalny">🌴 Zwrotnikowy/tropikalny</option>
+                                <option value="suchy">🏜️ Suchy</option>
+                                <option value="górski">⛰️ Górski</option>
+                                <option value="okołobiegunowy">❄️ Okołobiegunowy</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="question-icon"><i class="fas fa-hiking"></i></div>
+                        <div class="question-content">
+                            <label for="preferencja3">Jakie aktywności Cię interesują?</label>
+                            <select id="preferencja3" name="preferencja3" required>
+                                <option value="" disabled selected>Wybierz aktywność</option>
+                                <option value="Odpoczynek na plaży">🏖️ Odpoczynek na plaży</option>
+                                <option value="Trekking/Wspinaczka górska">⛰️ Trekking/Wspinaczka górska</option>
+                                <option value="Sporty wodne">🏄 Sporty wodne</option>
+                                <option value="Czas z naturą">🌲 Czas z naturą</option>
+                                <option value="Jazda na nartach">⛷️ Jazda na nartach</option>
+                                <option value="Poznawanie ciekawych miast i zabytków - zwiedzanie">🏛️ Zwiedzanie</option>
+                                <option value="W poszukiwaniu zorzy polarnej">✨ W poszukiwaniu zorzy polarnej</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="question-icon"><i class="fas fa-chart-line"></i></div>
+                        <div class="question-content">
+                            <label for="preferencja4">Jaką popularność miejsca preferujesz?</label>
+                            <select id="preferencja4" name="preferencja4" required>
+                                <option value="" disabled selected>Wybierz popularność</option>
+                                <option value="najchętniej odwiedzane">🔥 Najchętniej odwiedzane</option>
+                                <option value="duża popularność">📈 Duża popularność</option>
+                                <option value="średnia popularność">📊 Średnia popularność</option>
+                                <option value="mniejsza popularność">🌿 Mniejsza popularność</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <span>Znajdź moje miejsce</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

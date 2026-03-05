@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HoliAsk! - Twoje rekomendacje</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/mapa.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-map-marked-alt"></i>
+                <span>HoliAsk!</span>
+            </div>
+            <a href="{{ url_for('home.home') }}" class="back-btn">
+                <i class="fas fa-arrow-left"></i>
+                <span>Nowe wyszukiwanie</span>
+            </a>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="map-section">
+            <div class="section-header">
+                <i class="fas fa-globe"></i>
+                <h2>Mapa rekomendowanych miejsc</h2>
+            </div>
+            <div class="map-container">
+                {{ graph_1 | safe }}
+            </div>
+        </div>
+
+        {% if nazwa_miejsca %}
+        <div class="destinations-section">
+            <div class="section-header">
+                <i class="fas fa-star"></i>
+                <h2>Polecane destynacje</h2>
+            </div>
+            <div class="destinations-grid">
+                {% for i in range(nazwa_miejsca|length) %}
+                <div class="destination-card">
+                    <div class="card-header">
+                        <span class="rank">#{{ i+1 }}</span>
+                        <h3>{{ nazwa_miejsca[i] }}</h3>
+                    </div>
+                    <div class="card-image">
+                        <img src="{{ url_for('static', filename='images/' + zdjecie[i]) }}" alt="{{ nazwa_miejsca[i] }}">
+                    </div>
+                    <div class="card-content">
+                        <p>{{ opis_miejsca[i] }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="read-more-btn" onclick="toggleDescription(this)">
+                            <span>Czytaj więcej</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% else %}
+        <div class="no-results">
+            <i class="fas fa-search"></i>
+            <h3>Brak dostępnych miejsc</h3>
+            <p>Spróbuj zmienić kryteria wyszukiwania</p>
+        </div>
+        {% endif %}
+    </main>
+
+    <script>
+        function toggleDescription(button) {
+            const card = button.closest('.destination-card');
+            const content = card.querySelector('.card-content');
+            content.classList.toggle('expanded');
+            
+            const icon = button.querySelector('i');
+            if (content.classList.contains('expanded')) {
+                button.querySelector('span').textContent = 'Czytaj mniej';
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            } else {
+                button.querySelector('span').textContent = 'Czytaj więcej';
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            }
+        }
+
+        // Animacja pojawiania się kart
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        document.querySelectorAll('.destination-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
