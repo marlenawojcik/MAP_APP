@@ -78,18 +78,13 @@ Dokumentacja modułu: doc/architecture/data.md
 ## Dokumentacja (szczegóły)
 Dokumentacja techniczna znajduje się w katalogu doc/:
 
-Specyfikacja funkcjonalna: doc/specification/user_stories.md
-
 Architektura całej aplikacji: doc/architecture.md
 
 Architektura modułów:
 doc/architecture/home.md
 doc/architecture/map.md
 doc/architecture/recommendation.md
-doc/architecture/data.md
 Konfiguracja: doc/setup.md
-Referencja API: doc/api_reference.md
-Zasady pracy i kontrybucji: doc/contribution.md
 Prowadzenie projektu: doc/project_management.md
 
 ## Licencja
